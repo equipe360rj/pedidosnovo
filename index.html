@@ -472,23 +472,22 @@
                 formData.append('musica', musicaSelecionada);
                 formData.append('cantor', nome);
 
-                try {
-                    await fetch(urlAPI, {
-                        method: 'POST',
-                        body: formData
-                    });
+                await fetch(urlAPI, {
+                    method: 'POST',
+                    body: formData
+                });
 
-                    localStorage.setItem('ultimoPedido', new Date().getTime());
-                    document.getElementById('sessao-confirmacao').style.display = 'none';
-                    document.getElementById('feedback').style.display = 'block';
+                localStorage.setItem('ultimoPedido', new Date().getTime());
+                document.getElementById('sessao-confirmacao').style.display = 'none';
+                document.getElementById('feedback').style.display = 'block';
 
-                    setTimeout(() => location.reload(true), 3000);
-                } catch (error) {
-                    mostrarAlerta("ERRO", "Erro ao enviar pedido. Tente novamente.");
-                    document.getElementById('btnEnviar').disabled = false;
-                    document.getElementById('btnEnviar').innerText = "ENVIAR PEDIDO";
-                }
+                setTimeout(() => location.reload(true), 3000);
+            } catch (error) {
+                mostrarAlerta("ERRO", "Erro ao enviar pedido. Tente novamente.");
+                document.getElementById('btnEnviar').disabled = false;
+                document.getElementById('btnEnviar').innerText = "ENVIAR PEDIDO";
             }
+        }
     </script>
 
 </body>
